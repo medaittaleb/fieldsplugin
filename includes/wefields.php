@@ -43,11 +43,24 @@ function we_widgets_fields() {
 }
 
 
+
+// Shortcodes
+
 function shortcode_weMap($atts  = null, $content = null) {
 
     extract(shortcode_atts(array( 'width' => "450px", 'height' => "100%" ), $atts));
 
-    return fusion_get_option('weMap');
+    $html = fusion_get_option('weMap');
+    $dom = new DOMDocument;
+    $dom->loadHTML($html);
+    $xpath = new DOMXPath($dom);
+    $nodes = $xpath->evaluate("//iframe");
+    foreach($nodes as $node) {
+        $node->setAttribute('width', $width);
+        $node->setAttribute('height', $height);
+    }
+
+    return $dom->saveHTML();
 
 }
 add_shortcode('weMap', 'shortcode_weMap');

@@ -27,12 +27,12 @@ class Wefooter_Widget extends WP_Widget {
 	public function widget( $args, $instance ) {
         echo $args['before_widget'];
         
-		if ( ! empty( $instance['title'] ) ) {
-			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
-        }
+		// if ( ! empty( $instance['title'] ) ) {
+		// 	echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
+        // }
         
         // widget content
-        echo "Hi We Footer ".get_site_url();
+        echo $this->footerHtml("v1");
         
 		echo $args['after_widget'];
 	}
@@ -45,36 +45,21 @@ class Wefooter_Widget extends WP_Widget {
 	 * @param array $instance Previously saved values from database.
 	 */
 	public function form( $instance ) {
-		$title = ! empty( $instance['title'] ) ? $instance['title'] : esc_html__( '', 'wefooter_domain' );
+		$footerType = ! empty( $instance['footerType'] ) ? $instance['footerType'] : esc_html__( '', 'wefooter_domain' );
 		?>
 
+		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'footerType' ) ); ?> ">
+				<?php esc_attr_e('Footer type :', 'wefooter_domain'); ?>
+			</label>
+			<select id="<?php echo esc_attr( $this->get_field_id( 'footerType' ) ); ?>" 
+					name="<?php echo esc_attr( $this->get_field_name( 'footerType' ) ); ?>"
+			>
+				<option value="v1" <?php if(esc_attr( $footerType ) == "v1") echo 'selected="selected"'; ?> >Version 1</option>
+				<option value="v2" <?php if(esc_attr( $footerType ) == "v2") echo 'selected="selected"'; ?> >Version 2</option>
+			</select>
+		</p>
 
-        <!-- Title -->
-        <p>
-            <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
-                <?php esc_attr_e( 'Title:', 'wefooter_domain' ); ?>
-            </label> 
-            <input  class="widefat" 
-                    id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" 
-                    name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" 
-                    type="text" 
-                    value="<?php echo esc_attr( $title ); ?>"
-            >
-        </p>
-
-         <!-- Title -->
-         <p>
-            <label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>">
-                <?php esc_attr_e( 'Title:', 'wefooter_domain' ); ?>
-            </label> 
-            <input  class="widefat" 
-                    id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" 
-                    name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" 
-                    type="text" 
-                    value="<?php echo esc_attr( $title ); ?>"
-            >
-        </p>
-        
 		<?php 
 	}
 
@@ -90,9 +75,22 @@ class Wefooter_Widget extends WP_Widget {
 	 */
 	public function update( $new_instance, $old_instance ) {
 		$instance = array();
-		$instance['title'] = ( ! empty( $new_instance['title'] ) ) ? sanitize_text_field( $new_instance['title'] ) : '';
+		$instance['footerType'] = ( ! empty( $new_instance['footerType'] ) ) ? sanitize_text_field( $new_instance['footerType'] ) : '';
 
 		return $instance;
+	}
+
+	private function footerHtml($typeFtr){
+
+		if ($typeFtr == "v1") {
+			return "Hi We Footer Ver 1";
+		}
+		else if ($typeFtr == "v2") {
+			return "Hi We Footer Ver 2";
+		}
+
+		return "No Ver Selected";
+        
 	}
 
 } // class Foo_Widget
