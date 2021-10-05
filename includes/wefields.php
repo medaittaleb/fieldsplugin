@@ -43,8 +43,12 @@ function we_widgets_fields() {
 }
 
 
-function shortcode_weMap() {
+function shortcode_weMap($atts  = null, $content = null) {
+
+    extract(shortcode_atts(array( 'width' => "450px", 'height' => "100%" ), $atts));
+
     return fusion_get_option('weMap');
+
 }
 add_shortcode('weMap', 'shortcode_weMap');
 
@@ -57,3 +61,14 @@ function shortcode_weHoraire() {
     return fusion_get_option('weHoraire');
 }
 add_shortcode('weHoraire', 'shortcode_weHoraire');
+
+function shortcode_weSiteName() {
+    return get_bloginfo( 'name' );
+}
+add_shortcode('weSiteName', 'shortcode_weSiteName');
+
+function shortcode_weSiteUrl() {
+    return '<a href="'.get_site_url().'">'.get_site_url().'</a>';
+}
+add_shortcode('weSiteUrl', 'shortcode_weSiteUrl');
+

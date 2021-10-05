@@ -32,7 +32,7 @@ class Wefooter_Widget extends WP_Widget {
         }
         
         // widget content
-        echo "Hi We Footer";
+        echo "Hi We Footer ".get_site_url();
         
 		echo $args['after_widget'];
 	}
