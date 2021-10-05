@@ -30,9 +30,12 @@ class Wefooter_Widget extends WP_Widget {
 		// if ( ! empty( $instance['title'] ) ) {
 		// 	echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'] ) . $args['after_title'];
         // }
-        
+		
+		$vFooter = $instance['footerType'];
+
         // widget content
-        echo $this->footerHtml("v1");
+		echo $this->footerHtml($vFooter);
+
         
 		echo $args['after_widget'];
 	}
@@ -83,13 +86,25 @@ class Wefooter_Widget extends WP_Widget {
 	private function footerHtml($typeFtr){
 
 		if ($typeFtr == "v1") {
-			return "Hi We Footer Ver 1";
+			return $this->footerV1();
 		}
 		else if ($typeFtr == "v2") {
 			return "Hi We Footer Ver 2";
 		}
 
 		return "No Ver Selected";
+        
+	}
+
+
+	private function footerV1(){
+		$naf = do_shortcode('[weSiteName]');
+		return <<<HTML
+			<html>
+			<body><h1>{$naf}</h1>
+			</body>
+			</html>
+		HTML;
         
 	}
 
