@@ -17,7 +17,7 @@ require_once(plugin_dir_path( __FILE__ ).'/includes/wefooter-scripts.php');
 
 require_once(plugin_dir_path( __FILE__ ).'/includes/wefooter-class.php');
 
-require_once(plugin_dir_path( __FILE__ ).'/includes/wefooter-class.php');
+require_once(plugin_dir_path( __FILE__ ).'/includes/wefields.php');
 
 
 
