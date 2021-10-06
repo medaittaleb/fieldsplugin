@@ -1,0 +1,23 @@
+
+
+
+
+
+/* center headdig widget info footer fusion_accordion */
+.new_footer .panel-heading h4 {display: flex !important;justify-content: center !important;}
+
+.new_footer {display: flex;justify-content: space-around; border-bottom: 1px solid #ccc; padding-bottom: 40px; margin-bottom: 40px !important;}
+.new_footer .text-info-color{color: #C2A626 !important;opacity: 0.69}
+.new_footer .footer_part { width: 33%;}
+.new_footer i {color: #C2A626;}
+.new_footer .link_phone1 {color: #C2A626;}
+.new_footer .link_phone1:hover {color: #fff;}
+@media only screen and (max-width: 497px){
+	.new_footer, .fusion-footer .menu li a:after,.fusion-footer section#custom_html-3,.fusion-footer section#custom_html-2{ display: none;}
+  /* Menu Footer display grid */
+	.fusion-footer ul#menu-main-menu-footer { display: grid !important;text-align: left;}
+}
+@media only screen and (max-width: 700px){
+	.new_footer { display: block !important;}
+	.new_footer .footer_part {width: 100% !important;}
+}

@@ -5,6 +5,14 @@
  */
 class Wefooter_Widget extends WP_Widget {
 
+	public $weMap;
+	public $weAdress;
+	public $weHoraire;
+	public $weSiteName;
+	public $weSiteUrl;
+	public $phoneNumber1;
+	public $phoneNumber2;
+
 	/**
 	 * Register widget with WordPress.
 	 */
@@ -14,6 +22,15 @@ class Wefooter_Widget extends WP_Widget {
 			esc_html__( 'We Footer', 'wefooter_domain' ), // Name
 			array( 'description' => esc_html__( 'We Footer widget', 'wefooter_domain' ), ) // Args
 		);
+
+		$this->weMap = do_shortcode('[weMap]');
+		$this->weAdress = do_shortcode('[weAdress]');
+		$this->weHoraire = do_shortcode('[weHoraire]');
+		$this->weSiteName = do_shortcode('[weSiteName]');
+		$this->weSiteUrl = do_shortcode('[weSiteUrl]');
+		$this->phoneNumber1 = do_shortcode('[phoneNumber1]');
+		$this->phoneNumber2 = do_shortcode('[phoneNumber2]');
+		
 	}
 
 	/**
@@ -98,12 +115,34 @@ class Wefooter_Widget extends WP_Widget {
 
 
 	private function footerV1(){
-		$naf = do_shortcode('[weSiteName]');
+
 		return <<<HTML
-			<html>
-			<body><h1>{$naf}</h1>
-			</body>
-			</html>
+
+			<div class="new_footer">
+				<div class="footer_part center mb20">
+					<div class="fs30 mb20 ico-color"><i class="fas fa-mobile-alt"></i></div>
+					<div class=" fs18 mb20 upper  text-color title">Téléphone</div>
+					<div class=" fs13 text-info-color ">  {$this->phoneNumber1}  </div>
+					<div class=" fs13 text-info-color ">  {$this->phoneNumber2}  </div>
+				</div>
+
+				<div class="footer_part center mb20">
+					<div class="fs30 mb20 ico-color"><i class="fas fa-map-marker-alt"></i></div>
+					<div class=" fs18 mb20 upper  text-color title">Adresse</div>
+					<div class=" fs13 text-info-color ">
+						{$this->weAdress} 
+					</div>
+				</div>
+
+				<div class="footer_part center mb20">
+					<div class="fs30 mb20 ico-color"><i class="far fa-clock"></i></div>
+					<div class=" fs18  mb20 upper text-color title">Horaires d'ouverture</div>
+					<div class=" fs13 text-info-color ">
+						{$this->weHoraire} 
+					</div>
+				</div>
+			</div>
+
 		HTML;
         
 	}
