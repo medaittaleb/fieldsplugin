@@ -116,34 +116,52 @@ class Wefooter_Widget extends WP_Widget {
 
 	private function footerV1(){
 
-		return <<<HTML
-
+		$htmlF = <<<HTML
 			<div class="new_footer">
-				<div class="footer_part center mb20">
-					<div class="fs30 mb20 ico-color"><i class="fas fa-mobile-alt"></i></div>
-					<div class=" fs18 mb20 upper  text-color title">Téléphone</div>
-					<div class=" fs13 text-info-color ">  {$this->phoneNumber1}  </div>
-					<div class=" fs13 text-info-color ">  {$this->phoneNumber2}  </div>
-				</div>
-
-				<div class="footer_part center mb20">
-					<div class="fs30 mb20 ico-color"><i class="fas fa-map-marker-alt"></i></div>
-					<div class=" fs18 mb20 upper  text-color title">Adresse</div>
-					<div class=" fs13 text-info-color ">
-						{$this->weAdress} 
-					</div>
-				</div>
-
-				<div class="footer_part center mb20">
-					<div class="fs30 mb20 ico-color"><i class="far fa-clock"></i></div>
-					<div class=" fs18  mb20 upper text-color title">Horaires d'ouverture</div>
-					<div class=" fs13 text-info-color ">
-						{$this->weHoraire} 
-					</div>
-				</div>
-			</div>
-
 		HTML;
+
+		if ($this->phoneNumber1 != "" && $this->phoneNumber1 != null ) {			
+			$htmlF .= <<<HTML
+					<div class="footer_part center mb20">
+						<div class="fs30 mb20 ico-color"><i class="fas fa-mobile-alt"></i></div>
+						<div class=" fs18 mb20 upper  text-color title">Téléphone</div>
+						<div class=" fs13 text-info-color ">  {$this->phoneNumber1}  </div>
+						<div class=" fs13 text-info-color ">  {$this->phoneNumber2}  </div>
+					</div>
+			
+			HTML;
+		}
+
+		if ($this->weAdress != "" && $this->weAdress != null ) {			
+		
+			$htmlF .= <<<HTML
+					<div class="footer_part center mb20">
+						<div class="fs30 mb20 ico-color"><i class="fas fa-map-marker-alt"></i></div>
+						<div class=" fs18 mb20 upper  text-color title">Adresse</div>
+						<div class=" fs13 text-info-color ">
+							{$this->weAdress} 
+						</div>
+					</div>
+			HTML;
+		}
+
+		if ($this->weHoraire != "" && $this->weHoraire != null ) {
+			$htmlF .= <<<HTML
+					<div class="footer_part center mb20">
+						<div class="fs30 mb20 ico-color"><i class="far fa-clock"></i></div>
+						<div class=" fs18  mb20 upper text-color title">Horaires d'ouverture</div>
+						<div class=" fs13 text-info-color ">
+							{$this->weHoraire} 
+						</div>
+					</div>
+			HTML;
+		}
+
+		$htmlF .= <<<HTML
+			</div>
+		HTML;
+
+		return $htmlF;
         
 	}
 

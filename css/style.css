@@ -8,7 +8,7 @@
 
 .new_footer {display: flex;justify-content: space-around; border-bottom: 1px solid #ccc; padding-bottom: 40px; margin-bottom: 40px !important;}
 .new_footer .text-info-color{color: #C2A626 !important;opacity: 0.69}
-.new_footer .footer_part { width: 33%;}
+.new_footer .footer_part { width: 100%;}
 .new_footer i {color: #C2A626;}
 .new_footer .link_phone1 {color: #C2A626;}
 .new_footer .link_phone1:hover {color: #fff;}
