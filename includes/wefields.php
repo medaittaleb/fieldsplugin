@@ -16,7 +16,7 @@ function we_widgets_fields() {
             'id' => 'weMap',
             'type'        => 'textarea',
             'title' => __('Iframe Map', 'AVADA'),
-            'subtitle' => __('shortcode [weMap] OU CSS class "weMap"', 'AVADA'),
+            'subtitle' => __('shortcode [weMap width="450" height="200"] ', 'AVADA'),
             'validate' => 'string'
         ));
 
@@ -25,7 +25,7 @@ function we_widgets_fields() {
             'id' => 'weHoraire',
             'type'        => 'textarea',
             'title' => __('Horaires d’ouverture', 'AVADA'),
-            'subtitle' => __('shortcode [weHoraire] OU CSS class "weHoraire"', 'AVADA'),
+            'subtitle' => __('shortcode [weHoraire] ', 'AVADA'),
             'validate' => 'string'
         ));
 
@@ -34,7 +34,7 @@ function we_widgets_fields() {
             'id' => 'weAdress',
             'type'        => 'text',
             'title' => __('Adress', 'AVADA'),
-            'subtitle' => __('shortcode [weAdress] OU CSS class "weAdress"', 'AVADA'),
+            'subtitle' => __('shortcode [weAdress] ', 'AVADA'),
             'validate' => 'string'
         ));
 
@@ -48,7 +48,7 @@ function we_widgets_fields() {
 
 function shortcode_weMap($atts  = null, $content = null) {
 
-    extract(shortcode_atts(array( 'width' => "450px", 'height' => "100%" ), $atts));
+    extract(shortcode_atts(array( 'width' => "500", 'height' => "450" ), $atts));
 
     $html = fusion_get_option('weMap');
     $dom = new DOMDocument;

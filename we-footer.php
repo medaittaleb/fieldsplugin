@@ -10,7 +10,7 @@ Author URI: weag.ma
 
 
 if (!defined('ABSPATH')) {
-    exit;
+    die;
 }
 
 require_once(plugin_dir_path( __FILE__ ).'/includes/wefooter-scripts.php');
